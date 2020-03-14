@@ -1,0 +1,15 @@
+{
+    "from": "laravel:7.0.0",
+
+    "scripts": {
+        "post-install": [
+            "post-root-package-install",
+            "post-create-project-cmd",
+            "post-autoload-dump"
+        ]
+    },
+
+    "require": {
+        "barryvdh/laravel-debugbar": "*"
+    }
+}
