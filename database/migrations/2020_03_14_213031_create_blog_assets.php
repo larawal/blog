@@ -43,15 +43,15 @@ class CreateBlogAssets extends Migration
 
         Schema::create('articles_media', function(Blueprint $table) {
             $table->id();
-            $table->integer('id_article')->unsigned();
+            $table->bigInteger('id_article')->unsigned();
             $table->foreign('id_article')->references('id')->on('articles')->onDelete('cascade');
-            $table->integer('id_media')->unsigned();
+            $table->bigInteger('id_media')->unsigned();
             $table->foreign('id_media')->references('id')->on('media')->onDelete('cascade');
         });
 
         Schema::create('categories', function(Blueprint $table) {
             $table->id();
-            $table->integer('parent_id')->unsigned()->nullable();
+            $table->bigInteger('parent_id')->unsigned()->nullable();
             $table->integer('rank')->unsigned()->default(1);
             $table->string('name');
             $table->mediumText('description')->nullable();
@@ -62,9 +62,9 @@ class CreateBlogAssets extends Migration
 
         Schema::create('articles_categories', function(Blueprint $table) {
             $table->id();
-            $table->integer('id_article')->unsigned();
+            $table->bigInteger('id_article')->unsigned();
             $table->foreign('id_article')->references('id')->on('articles')->onDelete('cascade');
-            $table->integer('id_category')->unsigned();
+            $table->bigInteger('id_category')->unsigned();
             $table->foreign('id_category')->references('id')->on('categories')->onDelete('cascade');
         });
     }
