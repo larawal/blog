@@ -1,10 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Categories extends Model
+class Categories extends Base
 {
-    //
+    const TABLE_NAME = 'categories';
 }
