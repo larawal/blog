@@ -13,6 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['namespace' => 'website'], function() {
+    Route::get('/', 'FrontendController@home');
+    Route::get('article/{slug}', 'FrontendController@article');
+});
+
+Route::group(['namespace' => 'admin'], function() {
+    Auth::routes();
+    Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
+        Route::get('articles', 'ArticleController@index');
+        Route::group(['prefix' => 'articles/ajax'], function() {
+            Route::post('all', 'ArticleController@allAjax');
+            Route::post('add', 'ArticleController@showAjax');
+            Route::post('edit', 'ArticleController@showAjax');
+            Route::post('save', 'ArticleController@saveAjax');
+            Route::post('remove', 'ArticleController@removeAjax');
+        });
+    });
 });

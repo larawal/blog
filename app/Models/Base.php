@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\DB;
 
 class Base extends Model
 {
-    const TABLE_NAME = null;
+    const TABLE_NAME = 'undefined';
+    const TABLE_ID = 'id';
+    const TABLE_SLUG = 'slug';
     const ORDER_BY = 'id';
 
     /**
