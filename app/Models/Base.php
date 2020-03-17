@@ -33,7 +33,21 @@ class Base extends Model
     {
         return static::validId($id)
                 ? DB::table(static::TABLE_NAME)
-                    ->where('id', $id)
+                    ->where(static::TABLE_ID, $id)
+                    ->first()
+                : null;
+    }
+
+    /**
+     * Get one record by slug.
+     *
+     * @return object or null
+     */
+    public static function getOneBySlug($slug = null)
+    {
+        return is_string($slug) && strlen($slug) > 0
+                ? DB::table(static::TABLE_NAME)
+                    ->where(static::TABLE_SLUG, $slug)
                     ->first()
                 : null;
     }
@@ -58,7 +72,7 @@ class Base extends Model
     {
         return static::validId($id)
                 ? DB::table(static::TABLE_NAME)
-                ->where('id', $id)
+                ->where(static::TABLE_ID, $id)
                 ->delete()
                 : false;
     }
@@ -72,7 +86,7 @@ class Base extends Model
     {
         return static::validId($id)
                 ? DB::table(static::TABLE_NAME)
-                ->where('id', $id)
+                ->where(static::TABLE_ID, $id)
                 ->update($data)
                 : null;
     }
@@ -92,4 +106,3 @@ class Base extends Model
         return (($tmp > 0) and ($tmp == $id));
     }
 }
-

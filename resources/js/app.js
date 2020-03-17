@@ -8,11 +8,14 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import App from './components/front/App.vue';
+
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 import VueAxios from 'vue-axios';
 import axios from 'axios';
+Vue.use(VueAxios, axios);
 
 /**
  * Import Vue components
@@ -31,7 +34,7 @@ const routes = [
   },
   {
       name: 'article',
-      path: '/:slug',
+      path: '/article/:slug',
       component: Article
   }
 ];
@@ -43,4 +46,4 @@ const routes = [
  */
 
  const router = new VueRouter({ mode: 'history', routes: routes});
- const app = new Vue(Vue.util.extend({ router }, Archive)).$mount('#article');
+ const app = new Vue(Vue.util.extend({ router }, App)).$mount('#article');
