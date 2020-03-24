@@ -19,6 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['namespace' => 'website'], function() {
-    Route::get('articles', 'FrontendController@article_index');
-    Route::get('article/{slug}', 'FrontendController@article_show');
+    Route::get('articles', 'ApiController@listArticles');
+    Route::get('article/{slug}', 'ApiController@showArticle');
 });

@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'website'], function() {
     Route::get('/', 'FrontendController@home');
-    Route::get('article/{slug}', 'FrontendController@getArticle');
 });
 
 Route::group(['namespace' => 'admin'], function() {
