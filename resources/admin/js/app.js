@@ -8,7 +8,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import App from './components/website/App.vue';
+import App from './components/App.vue';
 
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
@@ -20,8 +20,8 @@ Vue.use(VueAxios, axios);
 /**
  * Import Vue components
  */
-import Archive from './components/website/Archive.vue';
-import Article from './components/website/Article.vue';
+import Archive from './components/Archive.vue';
+import Article from './components/Article.vue';
 
 /**
  * Define a routes of Vue pages
