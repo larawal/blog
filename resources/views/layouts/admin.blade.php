@@ -22,9 +22,17 @@
 <body class="sb-nav-fixed">
     <div id="app">
         @include('admin.includes.nav')
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div id="layoutSidenav">
+            @include('admin.includes.side')
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        @yield('content')
+                    </div>
+                </main>
+                @include('admin.includes.footer')
+            </div>
+        </div>
     </div>
 </body>
 </html>

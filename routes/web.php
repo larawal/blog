@@ -20,7 +20,7 @@ Route::group(['namespace' => 'website'], function() {
 Route::group(['namespace' => 'admin'], function() {
     Auth::routes();
     Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
-        Route::get('dashboard', 'DashboardController@index');
+        Route::get('dashboard', 'DashboardController@index')->name('dashboard');
         Route::get('articles', 'ArticleController@index');
         Route::group(['prefix' => 'articles/ajax'], function() {
             Route::post('all', 'ArticleController@allAjax');
