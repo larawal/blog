@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+
 use App\Http\Controllers\admin\AdminController;
 use Illuminate\Http\Request;
 
@@ -15,10 +16,5 @@ class DashboardController extends AdminController
     public function __construct()
     {
         parent::__construct();
-    }
-
-    public function index()
-    {
-        return view(self::INDEX_VIEW);
     }
 }
