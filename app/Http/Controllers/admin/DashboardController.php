@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\admin\AdminController;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class DashboardController extends AdminController
 {
+    const INDEX_VIEW = 'admin.dashboard';
     /**
      * Create a new controller instance.
      *
@@ -13,11 +14,11 @@ class DashboardController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        parent::__construct();
     }
 
     public function index()
     {
-        return view('admin.dashboard');
+        return view(self::INDEX_VIEW);
     }
 }

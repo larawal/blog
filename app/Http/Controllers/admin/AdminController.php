@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ArticleController extends AdminController
+class AdminController extends Controller
 {
-    const INDEX_VIEW = 'admin.articles';
+    const INDEX_VIEW = 'undefined';
     /**
      * Create a new controller instance.
      *
@@ -15,6 +15,6 @@ class ArticleController extends AdminController
      */
     public function __construct()
     {
-        parent::__construct();
+        $this->middleware('auth');
     }
 }
