@@ -57,7 +57,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xl-12">
-                            <label for="parent">Category Description</label>
+                            <label for="parent">Parent Category</label>
                             <select name="parent" id="parent" class="form-control">
                                 <option value="">Select a parent</option>
                             </select>
@@ -74,5 +74,5 @@
 </div>
 @endsection
 @push('scripts')
-<script src="{{asset('admin/js/categories.js')}}"></script>
+<script src="{{asset('admin/js/modules/categories.js')}}"></script>
 @endpush

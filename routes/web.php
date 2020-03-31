@@ -22,6 +22,9 @@ Route::group(['namespace' => 'admin'], function() {
     Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         Route::get('dashboard', 'DashboardController@index')->name('dashboard');
         Route::get('categories', 'CategoriesController@index')->name('categories');
+        Route::group(['prefix' => 'categories/ajax'], function() {
+            Route::post('get-parents', 'CategoriesController@getParents');
+        });
         Route::get('articles', 'ArticleController@index');
         Route::group(['prefix' => 'articles/ajax'], function() {
             Route::post('all', 'ArticleController@allAjax');

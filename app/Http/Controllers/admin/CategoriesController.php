@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\admin\AdminController;
 use Illuminate\Http\Request;
+use App\Models\Categories;
 
 class CategoriesController extends AdminController
 {
@@ -16,5 +17,13 @@ class CategoriesController extends AdminController
     public function __construct()
     {
         parent::__construct();
+    }
+
+    public function getParents(Request $request)
+    {
+        return response()->json([
+            'status'        => true,
+            'list'          => Categories::pluck('name','id')
+        ]);
     }
 }

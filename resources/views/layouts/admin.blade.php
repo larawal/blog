@@ -34,6 +34,11 @@
                 </div>
             </div>
         </div>
+        <script>
+            var ABSOLUTE_ADMIN_URL = "{{Request::root()}}/admin/";
+        </script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="{{asset('admin/js/main.js')}}"></script>
         @stack('scripts')
     </body>
 </html>
