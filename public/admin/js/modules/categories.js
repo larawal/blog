@@ -3,7 +3,19 @@ var categories = function() {
         _init_modal();
     };
 
+    var slug = function(str) {
+        var $slug = '';
+        var trimmed = $.trim(str);
+        $slug = trimmed.replace(/[^a-z0-9-]/gi, '-').
+        replace(/-+/g, '-').
+        replace(/^-|-$/g, '');
+        return $slug.toLowerCase();
+    };
+
     var _init_modal = function() {
+        $('#name').keyup(function() {
+            $('#slug').val(slug($(this).val()));
+        });
         $('#new-category').on('show.bs.modal', function() {
             _build_parents();
         });

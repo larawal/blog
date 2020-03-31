@@ -45,6 +45,12 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xl-12">
+                            <label for="name">Category Slug</label>
+                            <input type="text" name="slug" id="slug" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xl-12">
                             <label for="description">Category Description</label>
                             <textarea name="description" id="description" cols="30" rows="5" class="form-control"></textarea>
                         </div>

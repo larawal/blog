@@ -23,7 +23,7 @@ class CategoriesController extends AdminController
     {
         return response()->json([
             'status'        => true,
-            'list'          => Categories::pluck('name','id')
+            'list'          => Categories::pluck('name','slug')
         ]);
     }
 }
