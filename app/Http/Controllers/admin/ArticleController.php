@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ArticleController extends AdminController
 {
-    const INDEX_VIEW = 'admin.articles';
+    const INDEX_VIEW = 'admin.articles.index';
     /**
      * Create a new controller instance.
      *
