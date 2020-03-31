@@ -73,3 +73,6 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+<script src="{{asset('admin/js/categories.js')}}"></script>
+@endpush
