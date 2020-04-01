@@ -1,39 +1,66 @@
 @extends('layouts.admin')
 @section('content')
-<h1 class="mt-4">Categories</h1>
-<ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item">Settings</li>
-    <li class="breadcrumb-item active">Categories</li>
-</ol>
-<div class="row mb-4">
-    <div class="col-xl-12">
-        <button class="btn btn-success" data-toggle="modal" data-target="#new-category"><i class="fas fa-plus"></i> New</button>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xl-6">
-        <div class="card mb-4">
-            <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Area Chart Example</div>
-            <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+<!-- BEGIN: Subheader -->
+<div class="m-subheader ">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">Categories</h3>
+        </div>
+        <div>
+            <button data-toggle="modal" data-target="#new-category" class="btn btn-lg btn-secondary m-btn m-btn--outline-2x m-btn--air m-btn--icon m-btn--icon-only m-btn--pill">
+                <i class="la la-plus"></i>
+            </button>
         </div>
     </div>
-    <div class="col-xl-6">
-        <div class="card mb-4">
-            <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Bar Chart Example</div>
-            <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+</div>
+<!-- END: Subheader -->
+<div class="m-content">
+    <div class="row">
+        <div class="col-lg-6">
+            <!--begin::Portlet-->
+            <div class="m-portlet m-portlet--mobile">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text">
+                                List
+                                <small>manage your items</small>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div id="categories_list_ajax" class="m-portlet__body">
+                </div>
+            </div>
+            <!--end::Portlet-->
+            <!--begin::Portlet-->
+            <div class="m-portlet m-portlet--mobile" style="display:none;">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text">
+                                List
+                                <small>manage your items</small>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-portlet__body">
+                </div>
+            </div>
+            <!--end::Portlet-->
         </div>
     </div>
 </div>
 
-<!-- Modal -->
 <div class="modal fade" id="new-category" tabindex="-1" role="dialog" aria-labelledby="newCategory" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <form>
                 <div class="modal-header">
                     <h5 class="modal-title" id="newCategory">New Category</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -71,8 +98,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success">Create</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Create</button>
                 </div>
             </form>
         </div>
