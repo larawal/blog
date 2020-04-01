@@ -63,6 +63,8 @@
         <!--begin::Page Snippets --> 
         <script src="{{asset('admin/css/app/js/dashboard.js')}}" type="text/javascript"></script>
         <!--end::Page Snippets -->
+
+        <script src="{{asset('admin/js/main.js')}}"></script>
         @stack('scripts')
     </body>
 </html>
