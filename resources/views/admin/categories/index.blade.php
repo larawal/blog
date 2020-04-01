@@ -67,13 +67,13 @@
                     <div class="form-group row">
                         <div class="col-xl-12">
                             <label for="name">Category Name</label>
-                            <input type="text" name="name" id="name" class="form-control">
+                            <input type="text" name="name" id="name" class="form-control" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-xl-12">
                             <label for="name">Category Slug</label>
-                            <input type="text" name="slug" id="slug" class="form-control">
+                            <input type="text" name="slug" id="slug" class="form-control" required>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -99,7 +99,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Create</button>
+                    <button type="button" class="btn btn-success" onclick="categories.add();">Create</button>
                 </div>
             </form>
         </div>

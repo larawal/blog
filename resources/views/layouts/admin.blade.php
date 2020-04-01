@@ -16,8 +16,6 @@
         <link href="{{asset('admin/css/vendors/custom/fullcalendar/fullcalendar.bundle.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('admin/css/vendors/base/vendors.bundle.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('admin/css/demo/demo3/base/style.bundle.css')}}" rel="stylesheet" type="text/css" />
-        <!-- Custom CSS -->
-        <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet">
 
         <!--begin::Web font -->
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>

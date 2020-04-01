@@ -23,7 +23,9 @@ Route::group(['namespace' => 'admin'], function() {
         Route::get('dashboard', 'DashboardController@index')->name('dashboard');
         Route::get('categories', 'CategoriesController@index')->name('categories');
         Route::group(['prefix' => 'categories/ajax'], function() {
+            Route::post('list', 'CategoriesController@list');
             Route::post('get-parents', 'CategoriesController@getParents');
+            Route::post('add', 'CategoriesController@add');
         });
         Route::get('articles', 'ArticleController@index');
         Route::group(['prefix' => 'articles/ajax'], function() {
