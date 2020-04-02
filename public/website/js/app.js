@@ -52942,9 +52942,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/francescogrieco/blog/resources/website/js/app.js */"./resources/website/js/app.js");
-__webpack_require__(/*! /Users/francescogrieco/blog/resources/website/sass/app.scss */"./resources/website/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/francescogrieco/blog/resources/admin/sass/app.scss */"./resources/admin/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/blog/resources/website/js/app.js */"./resources/website/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/blog/resources/website/sass/app.scss */"./resources/website/sass/app.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/blog/resources/admin/sass/app.scss */"./resources/admin/sass/app.scss");
 
 
 /***/ })

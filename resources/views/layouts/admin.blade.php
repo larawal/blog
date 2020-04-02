@@ -15,6 +15,7 @@
         <!-- Theme CSS -->
         <link href="{{asset('admin/css/vendors.bundle.css')}}" rel="stylesheet" type="text/css">
         <link href="{{asset('admin/css/style.bundle.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('admin/css/app.css')}}" rel="stylesheet" type="text/css">
 
         <!--begin::Web font -->
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
