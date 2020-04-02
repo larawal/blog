@@ -29,7 +29,8 @@
                         </div>
                     </div>
                 </div>
-                <div id="categories_list_ajax" class="m-portlet__body">
+                <div class="m-portlet__body">
+                    <div id="categories_list_ajax" class="dd"></div>
                 </div>
             </div>
             <!--end::Portlet-->
@@ -107,5 +108,6 @@
 </div>
 @endsection
 @push('scripts')
+<script src="{{asset('admin/js/jquery.nestable.js')}}"></script>
 <script src="{{asset('admin/js/modules/categories.js')}}"></script>
 @endpush

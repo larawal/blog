@@ -39,7 +39,7 @@ class CategoriesController extends AdminController
         ];
 
         $data = [
-            'categories'        => Categories::getAll()
+            'categories'        => Categories::getAll('rank')
         ];
 
         if(count($data['categories']) <= 0) {
