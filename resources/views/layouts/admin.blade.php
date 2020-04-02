@@ -7,7 +7,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Larawal') }}</title>
 
         <!-- Favico -->
         <link rel="shortcut icon" href="{{asset('admin/img/logo/favicon.ico')}}"> 
@@ -45,7 +45,6 @@
         <!-- end:: Page -->
 
         @include('admin.includes.rightbar')
-
         @include('admin.includes.scroll')
 
         <!--begin::Base Scripts -->        
