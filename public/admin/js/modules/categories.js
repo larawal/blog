@@ -4,6 +4,13 @@ var categories = function() {
     var init = function() {
         _init_modal();
         _list_ajax();
+        $('.dd').nestable({
+            group: 1
+        }).on('change', _save_tree);
+    };
+
+    var _save_tree = function() {
+        console.log('ciao');
     };
 
     var slug = function(str) {
@@ -89,9 +96,19 @@ var categories = function() {
         });
     };
 
+    var edit = function(el) {
+        console.log(el);
+    };
+
+    var remove = function(el) {
+        console.log(el);
+    };
+
     return {
         init: init,
-        add: add
+        add: add,
+        edit: edit,
+        remove: remove
     }
 }();
 $(document).ready(function() {

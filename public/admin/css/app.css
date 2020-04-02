@@ -42,7 +42,6 @@
 .dd .dd-list .dd-handle {
   display: block;
   height: 30px;
-  margin: 5px 0;
   padding: 5px 10px;
   color: #333;
   text-decoration: none;
@@ -193,6 +192,13 @@
 
 .dd3-handle:hover {
   background: #ddd;
+}
+
+.ns-actions {
+  border-left: 1px solid #E3E3E3;
+  float: right;
+  height: 17px;
+  padding: 1px 0 0 10px;
 }
 
 /**

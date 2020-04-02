@@ -25,6 +25,20 @@ class Base extends Model
     }
 
     /**
+     * Get all records by filters.
+     *
+     * @return array
+     */
+    public static function getAllByFilters($filters = null)
+    {
+        $query = DB::table(static::TABLE_NAME);
+        if(strlen($filters) > 0) {
+            $query = $query->whereRaw($filters);
+        }
+        return $query->get();
+    }
+
+    /**
      * Get one record by ID.
      *
      * @return object or null

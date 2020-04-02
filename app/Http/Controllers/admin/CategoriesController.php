@@ -12,6 +12,7 @@ class CategoriesController extends AdminController
 {
     const INDEX_VIEW = 'admin.categories.index';
     const LIST_VIEW = 'admin.categories.list';
+    const CATEGORY_ITEM_VIEW = 'admin.categories.item';
     /**
      * Create a new controller instance.
      *
@@ -48,8 +49,34 @@ class CategoriesController extends AdminController
         }
         
         $result['status'] = true;
-        $result['html'] = view(self::LIST_VIEW, $data)->render();
+        $result['html'] = view(self::LIST_VIEW, ['tree' => self::_generateTree($data['categories'])])->render();
         return response()->json($result);
+    }
+
+    private function _generateTree($categories, $parent_id = null)
+    {
+        $result = null;
+        foreach($categories as $item)
+        {
+            if ($item->parent_id === $parent_id)
+            {
+                $result .= "<li class='dd-item dd3-item' data-id='$item->id'>
+                    <div class='dd-handle dd3-handle'></div>
+                    <div class='dd3-content'><span>$item->id &nbsp; $item->name</span>
+                    <div class='ns-actions'>
+                        <a href=\"javascript:void(0);\" onclick=\"categories.edit(this);\">
+                            <i class=\"fa fa-edit\">&nbsp;</i>
+                        </a>
+                        <a href=\"javascript:void(0);\" onclick=\"categories.remove(this);\">
+                            <i class=\"fa fa-trash-o\">&nbsp;</i>
+                        </a>
+                    </div>
+                    </div>" . self::_generateTree($categories, $item->id) . "
+                </li>";
+            }
+        }
+
+        return $result ? "\n<ol class=\"dd-list\">\n$result</ol>\n" : null;
     }
 
     public function add(Request $request)
