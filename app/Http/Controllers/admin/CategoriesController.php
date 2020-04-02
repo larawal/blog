@@ -68,7 +68,7 @@ class CategoriesController extends AdminController
                             <i class=\"fa fa-edit\">&nbsp;</i>
                         </a>
                         <a href=\"javascript:void(0);\" onclick=\"categories.remove(this);\">
-                            <i class=\"fa fa-trash-o\">&nbsp;</i>
+                            <i class=\"fa fa-trash\">&nbsp;</i>
                         </a>
                     </div>
                     </div>" . self::_generateTree($categories, $item->id) . "
