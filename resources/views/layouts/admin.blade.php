@@ -10,12 +10,11 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Favico -->
-        <link rel="shortcut icon" href="{{asset('admin/css/demo/demo3/media/img/logo/favicon.ico')}}" /> 
+        <link rel="shortcut icon" href="{{asset('admin/img/logo/favicon.ico')}}"> 
 
         <!-- Theme CSS -->
-        <link href="{{asset('admin/css/vendors/custom/fullcalendar/fullcalendar.bundle.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{asset('admin/css/vendors/base/vendors.bundle.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{asset('admin/css/demo/demo3/base/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('admin/css/vendors.bundle.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('admin/css/style.bundle.css')}}" rel="stylesheet" type="text/css">
 
         <!--begin::Web font -->
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
@@ -50,15 +49,9 @@
         @include('admin.includes.scroll')
 
         <!--begin::Base Scripts -->        
-        <script src="{{asset('admin/css/vendors/base/vendors.bundle.js')}}" type="text/javascript"></script>
-        <script src="{{asset('admin/css/demo/demo3/base/scripts.bundle.js')}}" type="text/javascript"></script>
+        <script src="{{asset('admin/js/vendors.bundle.js')}}" type="text/javascript"></script>
+        <script src="{{asset('admin/js/scripts.bundle.js')}}" type="text/javascript"></script>
         <!--end::Base Scripts -->
-        <!--begin::Page Vendors --> 
-        <script src="{{asset('admin/css/vendors/custom/fullcalendar/fullcalendar.bundle.js')}}" type="text/javascript"></script>
-        <!--end::Page Vendors -->
-        <!--begin::Page Snippets --> 
-        <script src="{{asset('admin/css/app/js/dashboard.js')}}" type="text/javascript"></script>
-        <!--end::Page Snippets -->
 
         <script src="{{asset('admin/js/main.js')}}"></script>
         @stack('scripts')

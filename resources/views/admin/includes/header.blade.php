@@ -7,7 +7,7 @@
                 <div class="m-stack m-stack--ver m-stack--general">
                     <div class="m-stack__item m-stack__item--middle m-stack__item--center m-brand__logo">
                         <a href="{{url('/')}}" class="m-brand__logo-wrapper">
-                            <img alt="" src="{{asset('admin/css/demo/demo3/media/img/logo/logo.png')}}"/>
+                            <img alt="" src="{{asset('admin/img/logo/logo.png')}}"/>
                         </a>
                     </div>
                     <div class="m-stack__item m-stack__item--middle m-brand__tools">
@@ -38,16 +38,16 @@
                             <li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
                                 <a href="javascript:void(0);" class="m-nav__link m-dropdown__toggle">
                                     <span class="m-topbar__userpic">
-                                        <img src="{{asset('admin/css/app/media/img/users/user3.jpg')}}" alt=""/>
+                                        <img src="{{asset('admin/img/user3.jpg')}}" alt=""/>
                                     </span>					
                                 </a>
                                 <div class="m-dropdown__wrapper">
                                     <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
                                     <div class="m-dropdown__inner">
-                                        <div class="m-dropdown__header m--align-center" style="background: url({{asset('admin/css/app/media/img/misc/user_profile_bg.jpg')}}); background-size: cover;">
+                                        <div class="m-dropdown__header m--align-center" style="background: url({{asset('admin/img/user_profile_bg.jpg')}}); background-size: cover;">
                                             <div class="m-card-user m-card-user--skin-dark">
                                                 <div class="m-card-user__pic">
-                                                    <img src="{{asset('admin/css/app/media/img/users/user3.jpg')}}" alt=""/>
+                                                    <img src="{{asset('admin/img/user3.jpg')}}" alt=""/>
                                                 </div>
                                                 <div class="m-card-user__details">
                                                     <span class="m-card-user__name m--font-weight-500">{{Auth::user()->name}}</span>
