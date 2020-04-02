@@ -52668,10 +52668,7 @@ var routes = [{
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: routes
-});
-var app = new Vue(Vue.util.extend({
-  router: router
-}, _components_App_vue__WEBPACK_IMPORTED_MODULE_0__["default"])).$mount('#article');
+}); //const app = new Vue(Vue.util.extend({ router }, App)).$mount('#article');
 
 /***/ }),
 
@@ -52945,9 +52942,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/blog/resources/website/js/app.js */"./resources/website/js/app.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/blog/resources/website/sass/app.scss */"./resources/website/sass/app.scss");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/blog/resources/admin/sass/app.scss */"./resources/admin/sass/app.scss");
+__webpack_require__(/*! /Users/francescogrieco/blog/resources/website/js/app.js */"./resources/website/js/app.js");
+__webpack_require__(/*! /Users/francescogrieco/blog/resources/website/sass/app.scss */"./resources/website/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/francescogrieco/blog/resources/admin/sass/app.scss */"./resources/admin/sass/app.scss");
 
 
 /***/ })

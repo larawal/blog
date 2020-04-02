@@ -18,8 +18,25 @@
 
         <!-- Styles -->
         <link href="{{ asset('website/css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('website/css/font-awesome.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('website/css/animate.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('website/css/linearicons.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('website/css/owl.carousel.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('website/css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('website/css/style.css') }}" rel="stylesheet">
     </head>
     <body>
-        <div id="article"></div>
+       @include('website.includes.header')
+
+       @include('website.includes.footer')
+
+        <!-- Scripts -->
+       <script src="{{ asset('website/js/jquery.min.js') }}" defer></script>
+       <script src="{{ asset('website/js/owl.carousel.min.js') }}" defer></script>
+       <script src="{{ asset('website/js/easing.min.js') }}" defer></script>
+       <script src="{{ asset('website/js/jquery.ajaxchimp.min.js') }}" defer></script>
+       <script src="{{ asset('website/js/jquery.tabs.min.js') }}" defer></script>
+       <script src="{{ asset('website/js/superfish.min.js') }}" defer></script>
+       <script src="{{ asset('website/js/main.min.js') }}" defer></script>
     </body>
 </html>
