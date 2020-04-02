@@ -9,6 +9,6 @@ class FrontendController extends Controller
 {
     public function home()
     {
-        return view('layouts.website');
+        return view('website.archive');
     }
 }

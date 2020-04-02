@@ -26,8 +26,11 @@
         <link href="{{ asset('website/css/style.css') }}" rel="stylesheet">
     </head>
     <body>
+      
        @include('website.includes.header')
-
+       <main>
+          @yield('content')
+       </main>
        @include('website.includes.footer')
 
         <!-- Scripts -->
