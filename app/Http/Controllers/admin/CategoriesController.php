@@ -14,6 +14,7 @@ class CategoriesController extends AdminController
     const LIST_VIEW = 'admin.categories.list';
     const ITEM_VIEW = 'admin.categories.item';
     const SCAFFOLDING_VIEW = 'admin.categories.scaffolding';
+    const MSG_NO_DATA = 'Nessun dato presente a DB';
 
     /**
      * Create a new controller instance.
@@ -46,7 +47,7 @@ class CategoriesController extends AdminController
         ];
 
         if(count($data['categories']) <= 0) {
-            $result['message'] = 'Nessun dato presente a DB';
+            $result['message'] = self::MSG_NO_DATA;
             return response()->json($result);
         }
         
@@ -58,6 +59,7 @@ class CategoriesController extends AdminController
     private function _generateTree($categories, $parent_id = null)
     {
         $result = null;
+
         foreach($categories as $item)
         {
             if ($item->parent_id === $parent_id)
@@ -66,7 +68,7 @@ class CategoriesController extends AdminController
             }
         }
         
-        return $result ? view(self::SCAFFOLDING_VIEW, ['items' => $result])->render() : null;
+        return view(self::SCAFFOLDING_VIEW, ['items' => $result])->render();
     }
 
     public function add(Request $request)
