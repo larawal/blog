@@ -1,0 +1,1 @@
+<ol class="dd-list">{!! $items !!}</ol>
