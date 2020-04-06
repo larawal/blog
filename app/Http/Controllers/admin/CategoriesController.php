@@ -6,7 +6,6 @@ use App\Http\Controllers\admin\AdminController;
 use Illuminate\Http\Request;
 use App\Models\Categories;
 use Validator;
-use DB;
 
 class CategoriesController extends AdminController
 {
@@ -15,7 +14,10 @@ class CategoriesController extends AdminController
     const ITEM_VIEW = 'admin.categories.item';
     const SCAFFOLDING_VIEW = 'admin.categories.scaffolding';
     const MSG_NO_DATA = 'Nessun dato presente a DB';
-
+    const MSG_ERROR_VALIDATION_FORM = 'Errore validazione form';
+    const MSG_ERROR_INSERT = 'Errore durante l\'inserimento';
+    const MSG_INSERTED = 'Categoria inserita';
+    
     /**
      * Create a new controller instance.
      *
@@ -42,17 +44,16 @@ class CategoriesController extends AdminController
             'html'          => ''
         ];
 
-        $data = [
-            'categories'        => Categories::getAll('rank')
-        ];
+        $categories = Categories::getAll('rank');
 
-        if(count($data['categories']) <= 0) {
+        if(count($categories) <= 0)
+        {
             $result['message'] = self::MSG_NO_DATA;
             return response()->json($result);
         }
         
         $result['status'] = true;
-        $result['html'] = view(self::LIST_VIEW, ['tree' => self::_generateTree($data['categories'])])->render();
+        $result['html'] = view(self::LIST_VIEW, ['tree' => self::_generateTree($categories)])->render();
         return response()->json($result);
     }
 
@@ -94,20 +95,22 @@ class CategoriesController extends AdminController
         ];
 
         $validator = Validator::make($data, $rules);
-        if($validator->fails()) {
-            $result['message'] = 'Errore validazione form';
-            $result['errors']   = $validator->getMessageBag()->toArray();
+        if($validator->fails())
+        {
+            $result['message'] = self::MSG_ERROR_VALIDATION_FORM;
+            $result['errors'] = $validator->getMessageBag()->toArray();
             return response()->json($result);
         }
         
         $inserted_id = Categories::insertGetId($data);
-        if($inserted_id <= 0) {
-            $result['message'] = 'Errore durante l\'inserimento';
+        if($inserted_id <= 0)
+        {
+            $result['message'] = self::MSG_ERROR_INSERT;
             return response()->json($result);
         }
 
         $result['status'] = true;
-        $result['message'] = 'Categoria inserita';
+        $result['message'] = self::MSG_INSERTED;
         return response()->json($result);
     }
 }
