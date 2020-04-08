@@ -26,6 +26,10 @@ Route::group(['namespace' => 'admin'], function() {
             Route::post('list', 'CategoriesController@list');
             Route::post('get-parents', 'CategoriesController@getParents');
             Route::post('add', 'CategoriesController@add');
+            Route::post('detail', 'CategoriesController@detail');
+            Route::post('save', 'CategoriesController@save');
+            Route::post('save_tree', 'CategoriesController@saveTree');
+            Route::post('remove', 'CategoriesController@remove');
         });
         Route::get('articles', 'ArticleController@index');
         Route::group(['prefix' => 'articles/ajax'], function() {

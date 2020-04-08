@@ -34,19 +34,40 @@
                 </div>
             </div>
             <!--end::Portlet-->
+        </div>
+        <div id="edit_ajax" class="col-lg-6" style="display:none;">
             <!--begin::Portlet-->
-            <div class="m-portlet m-portlet--mobile" style="display:none;">
+            <div class="m-portlet m-portlet--skin-dark m-portlet--bordered-semi">
                 <div class="m-portlet__head">
                     <div class="m-portlet__head-caption">
                         <div class="m-portlet__head-title">
                             <h3 class="m-portlet__head-text">
-                                List
-                                <small>manage your items</small>
+                                Edit&nbsp;<strong id="id_placeholder">#<span></span></strong>
                             </h3>
                         </div>
                     </div>
+                    <div class="m-portlet__head-tools">
+                        <ul class="m-portlet__nav">
+                            <li class="m-portlet__nav-item">
+                                <a href="javascript:void(0);" class="m-portlet__nav-link m-portlet__nav-link--icon" onclick="categories.close();">
+                                    <i class="la la-close"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="m-portlet__body">
+                    <div id="edit_item_ajax"></div>
+                </div>
+                <div class="m-portlet__foot">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 m--valign-middle">
+                            Portlet footer:
+                        </div>
+                        <div class="col-lg-6 m--align-right">
+                            <a href="javascript:void(0);" onclick="categories.save();" class="btn btn-success">Save</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!--end::Portlet-->
@@ -73,7 +94,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xl-12">
-                            <label for="name">Category Slug</label>
+                            <label for="slug">Category Slug</label>
                             <input type="text" name="slug" id="slug" class="form-control" required>
                         </div>
                     </div>

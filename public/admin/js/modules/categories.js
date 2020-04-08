@@ -9,8 +9,29 @@ var categories = function() {
         }).on('change', _save_tree);
     };
 
-    var _save_tree = function() {
-        console.log('ciao');
+    var _save_tree = function(e) {
+        var list = e.length ? e : $(e.target), output = list.data('output');
+
+        if (window.JSON) {
+            var json_data = window.JSON.stringify(list.nestable('serialize'));
+            $.ajax({
+                type: 'POST',
+                url: ABSOLUTE_ADMIN_URL +'categories/ajax/save_tree',
+                data: ({
+                    tree: json_data
+                }),
+                success: function (res) {
+                    if (res.status) {
+                        toastr.success(res.message);
+                    } else {
+                        toastr.error(res.message);
+                    }
+                },
+                error: function () {
+                    console.log('callback error');
+                }
+            });
+        }
     };
 
     var slug = function(str) {
@@ -96,19 +117,96 @@ var categories = function() {
         });
     };
 
-    var edit = function(el) {
-        console.log(el);
+    var edit = function(id) {
+        $('#edit_ajax').show();
+        $.ajax({
+            type: 'POST',
+            url: ABSOLUTE_ADMIN_URL + 'categories/ajax/detail',
+            dataType: 'json',
+            data: {
+                id: id 
+            },
+            success: function(res) {
+                if(res.status) {
+                    $('#id_placeholder').find('span').html(id);
+                    $('#edit_item_ajax').html(res.html);
+                    $('#edit_name').keyup(function() {
+                        $('#edit_slug').val(slug($(this).val()));
+                    });
+                } else {
+                    $('#edit_item_ajax').html(res.message);
+                }
+            },
+            error: function() {
+                console.log('callback error');
+            }
+        });
     };
 
-    var remove = function(el) {
-        console.log(el);
+    var remove = function(id) {
+        $.ajax({
+            type: 'POST',
+            url: ABSOLUTE_ADMIN_URL + 'categories/ajax/remove',
+            dataType: 'json',
+            data: {
+                id: id 
+            },
+            success: function(res) {
+                if(res.status) {
+                    if($('#id_placeholder').find('span').html() == id) {
+                        close();
+                    }
+                    toastr.success(res.message);
+                    _list_ajax();
+                } else {
+                    toastr.error(res.message);
+                }
+            },
+            error: function() {
+                console.log('callback error');
+            }
+        });
+    };
+
+    var close = function() {
+        $('#edit_item_ajax').empty();
+        $('#edit_ajax').hide();
+    };
+
+    var save = function() {
+        $.ajax({
+            type: 'POST',
+            url: ABSOLUTE_ADMIN_URL + 'categories/ajax/save',
+            dataType: 'json',
+            data: {
+                id: $('#id_placeholder').find('span').html(),
+                name: $('#edit_name').val(),
+                slug: $('#edit_slug').val(),
+                description: $('#edit_description').val(),
+                is_active: $('#edit_is_active').is(':checked') ? 1 : 0
+            },
+            success: function(res) {
+                if(res.status) {
+                    toastr.success(res.message);
+                    edit($('#id_placeholder').find('span').html());
+                    _list_ajax();
+                } else {
+                    toastr.error(res.message);
+                }
+            },
+            error: function() {
+                console.log('callbark error');
+            }
+        });
     };
 
     return {
         init: init,
         add: add,
         edit: edit,
-        remove: remove
+        remove: remove,
+        close: close,
+        save: save
     }
 }();
 $(document).ready(function() {

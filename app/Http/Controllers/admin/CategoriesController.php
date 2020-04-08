@@ -13,11 +13,8 @@ class CategoriesController extends AdminController
     const LIST_VIEW = 'admin.categories.list';
     const ITEM_VIEW = 'admin.categories.item';
     const SCAFFOLDING_VIEW = 'admin.categories.scaffolding';
-    const MSG_NO_DATA = 'Nessun dato presente a DB';
-    const MSG_ERROR_VALIDATION_FORM = 'Errore validazione form';
-    const MSG_ERROR_INSERT = 'Errore durante l\'inserimento';
-    const MSG_INSERTED = 'Categoria inserita';
-    
+    const DETAIL_VIEW = 'admin.categories.detail';
+
     /**
      * Create a new controller instance.
      *
@@ -72,6 +69,22 @@ class CategoriesController extends AdminController
         return view(self::SCAFFOLDING_VIEW, ['items' => $result])->render();
     }
 
+    public function saveTree(Request $request)
+    {
+        $result = [
+            'status'        => false,
+            'message'       => '',
+        ];
+
+        $tree = Categories::parseJsonArray(json_decode($request->input('tree'), true));
+        Categories::changeParentById($tree);
+
+        $result['message'] = static::MSG_UPDATED;
+        $result['status'] = true;
+
+        return response()->json($result);
+    }
+
     public function add(Request $request)
     {
         $result = [
@@ -111,6 +124,95 @@ class CategoriesController extends AdminController
 
         $result['status'] = true;
         $result['message'] = self::MSG_INSERTED;
+        return response()->json($result);
+    }
+
+    public function detail(Request $request)
+    {
+        $result = [
+            'status'        => false,
+            'message'       => '',
+            'html'          => ''
+        ];
+        
+        $category = Categories::getOne($request->input('id'));
+
+        if(is_null($category))
+        {
+            $result['message'] = self::MSG_NO_DATA;
+            return response()->json($result);
+        }
+        
+        $result['status'] = true;
+        $result['html'] = view(self::DETAIL_VIEW, ['category' => $category])->render();
+        return response()->json($result);
+    }
+
+    public function save(Request $request)
+    {
+        $result = [
+            'status'        => false,
+            'message'       => ''
+        ];
+
+        $data = [
+            'id'            => $request->input('id'),
+            'name'          => $request->input('name'),
+            'slug'          => $request->input('slug'),
+            'description'   => $request->input('description'),
+            'is_active'     => $request->input('is_active')
+        ];
+
+        $rules = [
+            'id'                    => 'required|integer|unique:categories,id,'.$request->input('id'),
+            'name'                  => 'required|string|max:255',
+            'slug'                  => 'required|string|unique:categories,slug,'.$request->input('id'),
+            'is_active'             => 'required|boolean'
+        ];
+
+        $validator = Validator::make($data, $rules);
+        if($validator->fails())
+        {
+            $result['message'] = self::MSG_ERROR_VALIDATION_FORM;
+            $result['errors'] = $validator->getMessageBag()->toArray();
+            return response()->json($result);
+        }
+        
+        $update = Categories::alter($request->input('id'), $data);
+        if(is_null($update) || !$update)
+        {
+            $result['message'] = self::MSG_ERROR_UPDATE;
+            return response()->json($result);
+        }
+
+        $result['status'] = true;
+        $result['message'] = self::MSG_UPDATED;
+        return response()->json($result);
+    }
+
+    public function remove(Request $request)
+    {
+        $result = [
+            'status'        => false,
+            'message'       => ''
+        ];
+
+        $record = Categories::getOne($request->input('id'));
+        if(is_null($record) || !is_object($record))
+        {
+            $result['message'] = self::MSG_NO_DATA;
+            return response()->json($result);
+        }
+        
+        $remove = Categories::remove($request->input('id'));
+        if(!$remove)
+        {
+            $result['message'] = self::MSG_ERROR_DELETE;
+            return response()->json($result);
+        }
+
+        $result['status'] = true;
+        $result['message'] = self::MSG_DELETED;
         return response()->json($result);
     }
 }
