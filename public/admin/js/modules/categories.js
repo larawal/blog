@@ -144,26 +144,56 @@ var categories = function() {
     };
 
     var remove = function(id) {
-        $.ajax({
-            type: 'POST',
-            url: ABSOLUTE_ADMIN_URL + 'categories/ajax/remove',
-            dataType: 'json',
-            data: {
-                id: id 
-            },
-            success: function(res) {
-                if(res.status) {
-                    if($('#id_placeholder').find('span').html() == id) {
-                        close();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    type: 'POST',
+                    url: ABSOLUTE_ADMIN_URL + 'categories/ajax/remove',
+                    dataType: 'json',
+                    data: {
+                        id: id 
+                    },
+                    success: function(res) {
+                        if(res.status) {
+                            if($('#id_placeholder').find('span').html() == id) {
+                                close();
+                            }
+                            Swal.fire(
+                                'Deleted!',
+                                res.message,
+                                'success'
+                            );
+                            _list_ajax();
+                        } else {
+                            Swal.fire(
+                                'Error!',
+                                res.message,
+                                'error'
+                            );
+                        }
+                    },
+                    error: function() {
+                        Swal.fire(
+                            'Error!',
+                            'callback error',
+                            'error'
+                        )
                     }
-                    toastr.success(res.message);
-                    _list_ajax();
-                } else {
-                    toastr.error(res.message);
-                }
-            },
-            error: function() {
-                console.log('callback error');
+                });
+            } else {
+                Swal.fire(
+                    'Declined!',
+                    'Your file has not been deleted.',
+                    'warning'
+                )
             }
         });
     };
