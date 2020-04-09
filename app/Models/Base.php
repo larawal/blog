@@ -13,6 +13,20 @@ class Base extends Model
     const ORDER_BY = 'id';
 
     /**
+     * Get query object.
+     *
+     * @return array
+     */
+    public static function getQueryObject($raw = null)
+    {
+        $query = DB::table(static::TABLE_NAME);
+        if(!is_null($raw)) {
+            $query->whereRaw($raw);
+        }
+        return $query;
+    }
+
+    /**
      * Get all records.
      *
      * @return array

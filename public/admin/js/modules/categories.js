@@ -34,18 +34,9 @@ var categories = function() {
         }
     };
 
-    var slug = function(str) {
-        var $slug = '';
-        var trimmed = $.trim(str);
-        $slug = trimmed.replace(/[^a-z0-9-]/gi, '-').
-        replace(/-+/g, '-').
-        replace(/^-|-$/g, '');
-        return $slug.toLowerCase();
-    };
-
     var _init_modal = function() {
         $('#name').keyup(function() {
-            $('#slug').val(slug($(this).val()));
+            $('#slug').val(slugify((this).val()));
         });
         $('#new-category').on('show.bs.modal', function() {
             _build_parents();
@@ -131,7 +122,7 @@ var categories = function() {
                     $('#id_placeholder').find('span').html(id);
                     $('#edit_item_ajax').html(res.html);
                     $('#edit_name').keyup(function() {
-                        $('#edit_slug').val(slug($(this).val()));
+                        $('#edit_slug').val(slugify($(this).val()));
                     });
                 } else {
                     $('#edit_item_ajax').html(res.message);

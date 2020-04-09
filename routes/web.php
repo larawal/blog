@@ -31,13 +31,13 @@ Route::group(['namespace' => 'admin'], function() {
             Route::post('save_tree', 'CategoriesController@saveTree');
             Route::post('remove', 'CategoriesController@remove');
         });
-        Route::get('articles', 'ArticleController@index');
+        Route::get('articles', 'ArticlesController@index')->name('articles');
         Route::group(['prefix' => 'articles/ajax'], function() {
-            Route::post('all', 'ArticleController@allAjax');
-            Route::post('add', 'ArticleController@showAjax');
+            Route::post('list', 'ArticlesController@list');
+            /*Route::post('add', 'ArticleController@showAjax');
             Route::post('edit', 'ArticleController@showAjax');
             Route::post('save', 'ArticleController@saveAjax');
-            Route::post('remove', 'ArticleController@removeAjax');
+            Route::post('remove', 'ArticleController@removeAjax');*/
         });
     });
 });
