@@ -25,6 +25,13 @@
                     <span class="m-menu__link-text">Categories</span>
                 </a>
             </li>
+            <li class="m-menu__item {{ Route::current()->getName() == 'media' ? 'm-menu__item--active' : '' }}">
+                <a href="{{url('admin/media')}}" class="m-menu__link">
+                    <span class="m-menu__item-here"></span>
+                    <i class="m-menu__link-icon flaticon-open-box"></i>
+                    <span class="m-menu__link-text">Media</span>
+                </a>
+            </li>
             {{--
             <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  m-menu-submenu-toggle="hover">
                 <a href="javascript:;" class="m-menu__link m-menu__toggle">
