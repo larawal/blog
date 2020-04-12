@@ -32,6 +32,7 @@ Route::group(['namespace' => 'admin'], function() {
             Route::post('remove', 'CategoriesController@remove');
         });
         Route::get('articles', 'ArticlesController@index')->name('articles');
+        Route::get('articles/{slug}', 'ArticlesController@edit');
         Route::group(['prefix' => 'articles/ajax'], function() {
             Route::post('list', 'ArticlesController@list');
             /*Route::post('add', 'ArticleController@showAjax');

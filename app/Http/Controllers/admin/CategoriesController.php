@@ -79,7 +79,7 @@ class CategoriesController extends AdminController
         $tree = Categories::parseJsonArray(json_decode($request->input('tree'), true));
         Categories::changeParentById($tree);
 
-        $result['message'] = static::MSG_UPDATED;
+        $result['message'] = self::MSG_UPDATED;
         $result['status'] = true;
 
         return response()->json($result);

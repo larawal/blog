@@ -10,6 +10,7 @@ use DataTables;
 class ArticlesController extends AdminController
 {
     const INDEX_VIEW = 'admin.articles.index';
+    const EDIT_VIEW = 'admin.articles.edit';
 
     /**
      * Create a new controller instance.
@@ -25,5 +26,13 @@ class ArticlesController extends AdminController
     {
         $query = Articles::getQueryObject();
         return DataTables::of($query)->make(true);
+    }
+
+    public function edit($slug = null)
+    {
+        $article = Articles::getOneBySlug($slug);
+        if(!is_object($article)) abort(404);
+
+        return view(self::EDIT_VIEW)->with('article', $article);
     }
 }

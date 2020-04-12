@@ -127,4 +127,9 @@
 @push('scripts')
 <script src="{{asset('admin/js/datatables.bundle.js')}}"></script>
 <script src="{{asset('admin/js/modules/articles.js')}}"></script>
+<script>
+    $(document).ready(function() {
+        articles.list();
+    });
+</script>
 @endpush

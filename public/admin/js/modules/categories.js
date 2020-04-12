@@ -1,4 +1,5 @@
 var categories = function() {
+    var module_path = ABSOLUTE_ADMIN_URL + 'categories/';
     var $ajax_container = $('#categories_list_ajax');
 
     var init = function() {
@@ -16,7 +17,7 @@ var categories = function() {
             var json_data = window.JSON.stringify(list.nestable('serialize'));
             $.ajax({
                 type: 'POST',
-                url: ABSOLUTE_ADMIN_URL +'categories/ajax/save_tree',
+                url: module_path +'ajax/save_tree',
                 data: ({
                     tree: json_data
                 }),
@@ -50,7 +51,7 @@ var categories = function() {
     var _build_parents = function() {
         $.ajax({
             type: 'POST',
-            url: ABSOLUTE_ADMIN_URL + 'categories/ajax/get-parents',
+            url: module_path + 'ajax/get-parents',
             dataType: 'json',
             success: function(res){
                 $.each(res.list, function(index, value) {
@@ -66,7 +67,7 @@ var categories = function() {
     var _list_ajax = function() {
         $.ajax({
             type: 'POST',
-            url: ABSOLUTE_ADMIN_URL + 'categories/ajax/list',
+            url: module_path + 'ajax/list',
             dataType: 'json',
             success: function(res) {
                 if(res.status) {
@@ -84,7 +85,7 @@ var categories = function() {
     var add = function() {
         $.ajax({
             type: 'POST',
-            url: ABSOLUTE_ADMIN_URL + 'categories/ajax/add',
+            url: module_path + 'ajax/add',
             dataType: 'json',
             data: {
                 name: $('#name').val(),
@@ -112,7 +113,7 @@ var categories = function() {
         $('#edit_ajax').show();
         $.ajax({
             type: 'POST',
-            url: ABSOLUTE_ADMIN_URL + 'categories/ajax/detail',
+            url: module_path + 'ajax/detail',
             dataType: 'json',
             data: {
                 id: id 
@@ -147,7 +148,7 @@ var categories = function() {
             if (result.value) {
                 $.ajax({
                     type: 'POST',
-                    url: ABSOLUTE_ADMIN_URL + 'categories/ajax/remove',
+                    url: module_path + 'ajax/remove',
                     dataType: 'json',
                     data: {
                         id: id 
@@ -197,7 +198,7 @@ var categories = function() {
     var save = function() {
         $.ajax({
             type: 'POST',
-            url: ABSOLUTE_ADMIN_URL + 'categories/ajax/save',
+            url: module_path + 'ajax/save',
             dataType: 'json',
             data: {
                 id: $('#id_placeholder').find('span').html(),
